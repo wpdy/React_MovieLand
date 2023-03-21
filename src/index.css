@@ -14,26 +14,18 @@ code {
 }
 
 
-.products_list {
+.movies_list {
   margin-top: 2em; 
-  /* height: 100vh; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
-
 }
 
-
-
-.one_item {
-
-  /* background: linear-gradient(#bdc3c7, 50%); */
+.one_movie {
   background-color: #bdb68f;
-
   font-family: "Comic Sans MS";
   text-align: center;
-  /* background-color: #8f5f9c; */
   margin: 10px;
   width: 350px;
   color: #fff;
@@ -43,8 +35,6 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   border: 2px solid black;
-
-
 }
 
 img {
@@ -96,13 +86,8 @@ input {
   margin-bottom: 15px;
 }
 
-
-
-
-
 button {
   --c: #fff;
-  /* background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, #004dff; */
   background-color: cornflowerblue;
   color: #0000;
   border: none;

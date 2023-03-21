@@ -1,15 +1,21 @@
+import GetMovieByID from "../services/GetMovieByID"
 
-const OneMovie = ({MoviesFromTitle, moreMovie}) => {
-    // console.log(MoviesFromTitle)
+const OneMovie = ({MoviesFromTitle, MovieInfromation}) => {
+
+    const MoreInfo = (id) => {
+        GetMovieByID(id).then(res => {
+            MovieInfromation(res)
+        })
+    }
 
   return (
-    <div className="products_list">
+    <div className="movies_list">
         {
             MoviesFromTitle.Search?.map((item) => (
-                <div key={item.imdbID} className='one_item'>
-                    <h3>{item.Title}({item.Year})</h3>
+                <div key={item.imdbID} className='one_movie'>
+                    <h3>{item.Title} {item.Year}</h3>
                     <img src={item.Poster} alt=""/>
-                    <button className="button-92" onClick={() => moreMovie(item.imdbID)}>MORE</button>
+                    <button className="button-92" onClick={() => MoreInfo(item.imdbID)}>MORE</button>
                 </div>
             ))
         }

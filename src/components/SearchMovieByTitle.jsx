@@ -1,25 +1,23 @@
 import { useRef } from 'react'
 import GetMoviesByTitle from '../services/GetMoviesByTitle';
 
-const SearchMovieByTitle = ({setResults}) => {
+const SearchMovieByTitle = ({AllMoviesByTitle}) => {
 
     const inputRef = useRef(null);
 
-    function handleClick() {
-        getMovieByTitle(inputRef.current.value)
+    const handleClick = () => {
         if (inputRef.current.value === '') {
             alert('Please fill search field:)')
         }
-        inputRef.current.value = ''
-        
+        else {
+            GetMoviesByTitle(inputRef.current.value).then(res => {
+                console.log(res)
+                AllMoviesByTitle(res)
+            })
+            inputRef.current.value = ''
+        }
     }
-
-    const getMovieByTitle = (searchWord) => {
-        GetMoviesByTitle(searchWord).then(res => {
-            setResults(res)
-        })
-    }
-
+    
   return (
     <div className='header'>
         <h1 className='title1'>MovieLand</h1>

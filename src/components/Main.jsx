@@ -1,39 +1,34 @@
 import { useState } from "react"
-import GetMovieByID from "../services/GetMovieByID";
 import MovieInfo from "./MovieInfo";
 import OneMovie from "./OneMovie";
 import SearchMovieByTitle from "./SearchMovieByTitle";
 
 const Main = () => {
 
-    const [MoviesFromTitle, setMoviesFromTitle] = useState([])
+    const [MoviesByTitle, setMoviesByTitle] = useState([])
     const [show, setShow] = useState(true)
-    const [chosen, setChosen] = useState({});
+    const [selectedMovie, setSelectedMovie] = useState({});
 
 
-    const setResults = (movies) => {
-        setMoviesFromTitle(movies)
+    const AllMoviesByTitle = (movies) => {
+        setMoviesByTitle(movies)
     }
 
-    const moreMovie = (id) => {
-        GetMovieByID(id).then(res => {
-            setShow(!show)
-            setChosen (res)
-        })
+    const MovieInfromation = (res) => {
+        setShow(!show)
+        setSelectedMovie(res)
     }
-    
-  
 
     const goBack = () => {
         setShow(!show)
-        setChosen({})
+        setSelectedMovie({})
     }
 
   return (
     <div>
-        {show && <SearchMovieByTitle setResults={setResults}/>}
-        {show && <OneMovie MoviesFromTitle={MoviesFromTitle} moreMovie={moreMovie}/>}
-        {(typeof chosen.Title != "undefined") ? <MovieInfo chosen={chosen} goBack={goBack}/> : false}
+        {show && <SearchMovieByTitle AllMoviesByTitle={AllMoviesByTitle}/>}
+        {show && <OneMovie MoviesFromTitle={MoviesByTitle} MovieInfromation={MovieInfromation}/>}
+        {typeof selectedMovie.Title != "undefined" ? <MovieInfo selectedMovie={selectedMovie} goBack={goBack}/> : false}
     </div>
   )
 }

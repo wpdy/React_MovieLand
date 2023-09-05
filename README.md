@@ -1,1 +1,1 @@
-Live Preview: https://vercel.com/wpdy/react-movie-land
+Live Preview: https://react-movie-land.vercel.app/
